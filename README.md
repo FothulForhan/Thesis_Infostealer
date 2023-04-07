@@ -5,7 +5,7 @@ This repository contains the files related to Thesis titled "Analysis of Infoste
 
 
 ## Contents
-Mitre ATTACK Navigator: Contains the JSON files of the MITRE mapping for each sample used in the study.The layers are mapped to the MITRE ATT&CK framework, and they include the MITRE Techniques observed from the dynamic analysis, which were compared amongst the samples.The combined mapping of all the samples is available in the "combined_mitre_mapping_for_8_samples" JSON file. The common MITRE-mapped techniques used in all the samples are listed in the "common_techniques_mapping" JSON file. The folder also contains SVG files for few layers.
+MITRE Attack Navigator: Contains the JSON files of the MITRE mapping for each sample used in the study.The layers are mapped to the MITRE ATT&CK framework, and they include the MITRE Techniques observed from the dynamic analysis, which were compared amongst the samples.The combined mapping of all the samples is available in the "combined_mitre_mapping_for_8_samples" JSON file. The common MITRE-mapped techniques used in all the samples are listed in the "common_techniques_mapping" JSON file. The folder also contains SVG files for few layers.
 
 
 ## How to Use
