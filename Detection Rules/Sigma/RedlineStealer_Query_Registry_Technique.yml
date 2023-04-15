@@ -1,0 +1,29 @@
+title: Detection of Redline Malware using Query Registry Technique
+description: Detects the presence of Query Registry technique in Redline Malware
+references:
+    - https://attack.mitre.org/techniques/T1012/
+author: Fothul Karim Forhan
+date: 15/04/2023
+status: experimental
+tags:
+    - attack.t1012
+    - malware
+    - redlinestealer
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection1:
+    EventID: 12
+    TargetObject: '*\REGISTRY\MACHINE\SOFTWARE\Microsoft\Ole*'
+  selection2:
+    EventID: 12
+    TargetObject: '*\REGISTRY\USER\S-1-5-21-*-1001_Classes\Local Settings\Software\Microsoft*'
+  condition: selection1 or selection2
+fields:
+  - Image
+  - TargetObject
+  - EventType
+falsepositives:
+  - Legitimate applications monitoring the same registry keys
+level: high

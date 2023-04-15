@@ -1,0 +1,25 @@
+title: Detection of Redline Malware using Virtualization/Sandbox Evasion Technique
+description: Detects the presence of Virtualization/Sandbox evasion techniques in Redline Malware
+references:
+    - https://attack.mitre.org/techniques/T1497/
+author: Fothul Karim Forhan
+date: 15/04/2023
+status: experimental
+tags:
+    - attack.t1497
+    - malware
+    - redlinestealer
+logsource:
+    product: windows
+    service: sysmon
+    source: EventID: 1
+detection:
+    selection:
+        EventID: 1
+        Image: '*\\KERNEL32.dll'
+        CommandLine: '*Sleep*'
+        CommandLine: '*GetTickCount*'
+    condition: selection
+falsepositives:
+    - Legitimate software may use the Sleep and GetTickCount functions.
+level: high

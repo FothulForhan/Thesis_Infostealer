@@ -1,0 +1,22 @@
+title: Detection of Redline Malware using Input Capture sub-technique
+description: Detects the presence of Input Capture Sub-technique in Redline Malware
+references:
+  - https://attack.mitre.org/techniques/T1056/004
+author: Fothul Karim Forhan
+date: 15/04/2023
+status: experimental
+logsource:
+  product: windows
+  service: process_creation
+detection:
+  selection:
+    CommandLine: '*Wow64Transition@NTDLL.DLL*'
+  condition: selection
+fields:
+  - CommandLine
+  - Image
+  - ParentCommandLine
+  - User
+falsepositives:
+  - Legitimate applications using Wow64Transition
+level: high

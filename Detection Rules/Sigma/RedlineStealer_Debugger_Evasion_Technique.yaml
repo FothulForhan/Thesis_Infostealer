@@ -1,0 +1,30 @@
+title: Detection of Redline Malware using Debugger Evasion technique
+description: Detects the presence of debugger evasion API strings in Redline Malware
+references:
+    - https://attack.mitre.org/techniques/T1622/
+author: Fothul Karim Forhan
+date: 15/04/2023
+status: experimental
+tags:
+    - attack.t1622
+    - malware
+    - redlinestealer
+logsource:
+    category: process_creation
+    product: windows
+    event_id: 1
+detection:
+    selection:
+        EventData.Image: '*'
+    condition: >-
+        EventData.Image
+        Contains "IsDebuggerPresent" AND
+        (
+            EventData.Image
+            Contains "SetUnhandledExceptionFilter" OR
+            EventData.Image
+            Contains "UnhandledExceptionFilter"
+        )
+falsepositives:
+    - None at the moment.
+level: high

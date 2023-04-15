@@ -1,0 +1,22 @@
+title: Detection of Redline Malware using Create or Modify Process technique
+description: Detects the use of Create or Modify Process technique by Redline malware
+references:
+    - https://attack.mitre.org/techniques/T1543/    
+author: Fothul Karim Forhan
+date: 15/04/2023
+status: experimental
+tags:
+    - attack.t1543
+    - malware
+    - redlinestealer
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        CommandLine|contains: '*GetStartupInfoW*'
+        TargetImageFileName|contains: "\\KERNEL32.DLL"
+    condition: selection
+falsepositives:
+    - Some legitimate software may use the GetStartupInfoW function.
+level: high
